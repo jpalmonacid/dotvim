@@ -1,0 +1,489 @@
+global !p
+def read_composer_json():
+	import json
+
+	composer_file = 'composer.json'
+	if not os.path.isfile(composer_file): return
+
+	with open(composer_file) as data_file:
+		config = json.load(data_file)
+
+	return config
+
+def get_autoload_paths():
+	config = read_composer_json()
+
+	if 'autoload' not in config: return []
+	if 'psr-4' not in config['autoload']: return []
+
+	paths = config['autoload']['psr-4']
+
+	if 'autoload-dev' in config and 'psr-4' in config['autoload-dev']:
+		 paths.update(config['autoload-dev']['psr-4'])
+
+	return paths
+
+def class_name_from_file():
+	return re.match(r'.*(?=\.)', fn).group()
+
+def get_class_name_without(words):
+	words = words if type(words) != str else (words,)
+	class_name = class_name_from_file()
+	for word in words:
+		class_name = class_name.replace(word, '')
+	return class_name
+
+def get_namespace():
+	dir_path = os.path.dirname(path) + '/'
+	for ns, fp in get_autoload_paths().items():
+		m = re.search(r'' + re.escape(fp) + '(.*)', dir_path)
+		if m: return (ns.strip('\\') + '\\' + m.group(1).replace('/', '\\')).strip('\\')
+
+def is_custom_type(type):
+	return (len(t[1]) > 0 and t[1][0].isupper())
+
+def lowercase_first(string):
+	if len(string) < 1: return ''
+
+	return string[0].lower() + string[1:]
+
+def uppercase_first(string):
+	if len(string) < 1: return ''
+
+	return string[0].upper() + string[1:]
+
+def split_arg_and_type(arg):
+	parts = list(map(lambda s: s.strip(), arg.strip().split(' ')))
+
+	if len(parts) != 2:
+		return ['mixed', parts[0]]
+
+	return parts
+
+def generate_properties(args):
+	args = args.strip()
+
+	if args:
+		args = args.split(',')
+		args = list(map(split_arg_and_type, args))
+	else:
+		args = []
+
+	properies = ''
+	for arg in args:
+		properies += '\n    /** @var ' + arg[0] + ' */'
+		properies += '\n    private ' + arg[1] + ';\n'
+
+	return properies
+
+def set_fields_from_arguments(args):
+	args = args.strip()
+
+	if args:
+		args = args.split(',')
+		args = list(map(split_arg_and_type, args))
+	else:
+		args = []
+
+	properies = []
+	for arg in args:
+		properies.append('$this->' + arg[1][1:] + ' = ' + arg[1] + ';')
+
+	return properies
+
+def docblock(args):
+	args = args.strip()
+
+	if args:
+		args = args.split(',')
+		args = list(map(split_arg_and_type, args))
+	else:
+		args = []
+
+	from functools import reduce
+	max_type_len = reduce(lambda curr, arg: len(arg[0]) if len(arg[0]) > curr else curr, args, 0)
+
+	block = ''
+	for arg in args:
+		block += '\n     * @param ' + arg[0].ljust(max_type_len) +' ' + arg[1]
+
+	if block: block += '\n     *'
+
+	return block
+endglobal
+
+snippet <? "php open tag" b
+<?php
+
+endsnippet
+
+snippet try "php try and catch blocks" b
+try
+{
+	${0:${VISUAL}}
+}
+catch (${1:\Exception} $e)
+{
+	${2}
+}
+endsnippet
+
+snippet vdd "php var_dump and die"
+var_dump(${1}); die();
+endsnippet
+
+snippet ns "php namespace" b
+namespace `!p snip.rv = get_namespace()`;
+
+endsnippet
+
+snippet f "Closure function" wm
+function (${1}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet c "php namespace and class" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+class `!p snip.rv = class_name_from_file()`
+{
+	$0
+}
+
+endsnippet
+
+snippet lcc "Laravel Controller" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+class `!p snip.rv = class_name_from_file()` extends Controller
+{
+	$0
+}
+
+endsnippet
+
+snippet i "php namespace and interface" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+interface `!p snip.rv = class_name_from_file()`
+{
+	$0
+}
+endsnippet
+
+snippet t "php namespace and trait" b
+<?php
+
+namespace `!p snip.rv = get_namespace()`;
+
+trait `!p snip.rv = class_name_from_file()`
+{
+	$0
+}
+endsnippet
+
+snippet $t "this" wm
+$this->${0}
+endsnippet
+
+snippet class "class" b
+class ${1:`!p snip.rv = class_name_from_file()`}
+{
+	$0
+}
+endsnippet
+
+snippet interface "interface" b
+interface ${1:`!p snip.rv = class_name_from_file()`}
+{
+	$0
+}
+endsnippet
+
+snippet trait "trait" b
+trait ${1:`!p snip.rv = class_name_from_file()`}
+{
+	$0
+}
+endsnippet
+
+snippet __ "php constructor" b
+`!p snip.rv = generate_properties(t[1])`
+/**`!p snip.rv = docblock(t[1])`/
+public function __construct($1)
+{
+	${0:`!p
+snip >> 1
+for l in set_fields_from_arguments(t[1]): snip += l`}
+}
+endsnippet
+
+snippet $t= "assign local variable to instance variable" b
+$this->${1} = $$1;
+endsnippet
+
+snippet sg "Setter and Getter" b
+
+/** @var ${1} */
+private $${2:`!p if is_custom_type(t[1]): snip.rv = lowercase_first(t[1])`};
+
+`!p snip.rv = '/** @param ' + t[1] + ' $' + t[2] + ' */'`
+public function set`!p snip.rv = uppercase_first(t[2])`(`!p if is_custom_type(t[1]): snip.rv = t[1] + ' '`$$2)
+{
+	$this->$2 = `!p snip.rv = '' if is_custom_type(t[1]) else '(' + t[1] + ') '`$$2;
+}
+
+/** @return $1 */
+public function get`!p snip.rv = uppercase_first(t[2])`()
+{
+	return $this->$2;
+}
+endsnippet
+
+snippet if "php if" !b
+if (${1}) {
+	$0
+}
+endsnippet
+
+snippet p "property" b
+/**
+ * @var ${1}
+ */
+private $${2:`!p if (is_custom_type(t[1])): snip.rv = lowercase_first(t[1])`};
+
+endsnippet
+
+snippet m "method" b
+/**`!p snip.rv = docblock(t[3])`
+ * @return $4
+ */
+${1:public} function ${2:methodName}(${3:parameters})
+{
+	$0
+}
+endsnippet
+
+snippet ms "method signature" b
+/**`!p snip.rv = docblock(t[2])`
+ * @return $3
+ */
+public function ${1:methodName}(${2:parameters});
+
+endsnippet
+
+snippet sm "setter" b
+/** @param ${1} $${2:`!p snip.rv = lowercase_first(t[1]) if is_custom_type(t[1]) else ''`} */
+public function set`!p snip.rv = uppercase_first(t[2])`(`!p snip.rv = t[1] + ' ' if is_custom_type(t[1]) else ''`$$2)
+{
+	$this->$2 = `!p snip.rv = '' if is_custom_type(t[1]) else '(' + t[1] + ') '`$$2;
+}
+endsnippet
+
+snippet gm "getter" b
+/** @return ${1} */
+public function get${2:`!p snip.rv = t[1] if is_custom_type(t[1]) else ''`}()
+{
+	return $this->`!p snip.rv = lowercase_first(t[2])`;
+}
+endsnippet
+
+snippet map "array map" b
+array_map(function($${1:value}) {
+	return $3;
+}, $$2);
+endsnippet
+
+snippet filter "array filter" b
+array_filter($$1, function($${2:value}) {
+	return $3;
+});
+endsnippet
+
+snippet reduce "array reduce" b
+array_reduce($$1, function($${2:carry}, $${3:value}) {
+	return $4;
+});
+endsnippet
+
+snippet em "Fluent Entity Mapping" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+use `!p snip.rv = get_class_name_without('Mapping')`$1;
+use LaravelDoctrine\Fluent\EntityMapping;
+use LaravelDoctrine\Fluent\Fluent;
+
+class `!p snip.rv = class_name_from_file()` extends EntityMapping
+{
+	/**
+	 * Returns the fully qualified name of the class that this mapper maps.
+	 *
+	 * @return string
+	 */
+	public function mapFor()
+	{
+		return `!p snip.rv = get_class_name_without('Mapping')`::class;
+	}
+
+	/**
+	 * Load the object's metadata through the Metadata Builder object.
+	 *
+	 * @param Fluent $builder
+	 */
+	public function map(Fluent $builder)
+	{
+		$builder->$0
+	}
+}
+
+endsnippet
+
+snippet drc "Doctrine EntityRepository subclass" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+use `!p snip.rv = get_class_name_without('Doctrine')`$1;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+
+class `!p snip.rv = class_name_from_file()` extends EntityRepository implements `!p snip.rv = get_class_name_without('Doctrine')`
+{
+    /**
+     * `!p snip.rv = class_name_from_file()` constructor.
+     *
+     * @param EntityManager $entityManager
+     */
+    public function __construct(EntityManager $entityManager)
+    {
+        parent::__construct(
+            $entityManager,
+            $entityManager->getClassMetadata(`!p snip.rv = get_class_name_without(('Doctrine', 'Repository'))`$0::class)
+        );
+    }
+}
+
+endsnippet
+
+snippet rbc "Laravel Route Binder class" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+use App\Http\Controllers\\`!p snip.rv = get_class_name_without('Routes')`Controller;
+use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Routing\Router;
+use LaravelBA\RouteBinder\RouteBinder;
+
+class `!p snip.rv = class_name_from_file()` implements RouteBinder
+{
+    const ${1:ALIASCONSTANT} = '`!p snip.rv = get_class_name_without('Routes').lower() + 's'`${2}.${1/\w+/\L$0\E/}';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addBindings(Router $router)
+    {
+        ${4:$router->pattern('id', '[0-9]+');}
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addRoutes(Registrar $router)
+    {
+        $router->group(['middleware' => ['web']], function (Registrar $router) {
+            $router->get('${5:/url}', [
+                'as'   => self::$1,
+                'uses' => `!p snip.rv = get_class_name_without('Routes')`Controller::class . '@${3:controllerAction}',
+            ]);
+			$0
+        });
+    }
+}
+
+endsnippet
+
+snippet sc "Laravel Database Seeder" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+use `!p snip.rv = get_class_name_without('Seeder')`$0;
+use Doctrine\ORM\EntityManagerInterface;
+use Illuminate\Database\Seeder;
+
+class `!p snip.rv = class_name_from_file()` extends Seeder
+{
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
+     * `!p snip.rv = class_name_from_file()` constructor.
+     *
+     * @param $entityManager
+     */
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    public function run()
+    {
+        $faker = \Faker\Factory::create();
+
+        $`!p snip.rv = get_class_name_without('Seeder').lower()` = new `!p snip.rv = get_class_name_without('Seeder')`();
+
+        $this->entityManager->persist($`!p snip.rv = get_class_name_without('Seeder').lower()`);
+
+        $this->entityManager->flush();
+    }
+}
+
+endsnippet
+
+snippet tc "phpunit test class" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+use PHPUnit_Framework_TestCase;
+
+class `!p snip.rv = class_name_from_file()` extends PHPUnit_Framework_TestCase
+{
+	public function test_${1:behaviour}()
+	{
+		${2}
+	}
+}
+
+endsnippet
+
+snippet l "Listener class" b
+<?php
+namespace `!p snip.rv = get_namespace()`;
+
+class `!p snip.rv = class_name_from_file()`
+{
+    /**
+     * Create the event listener.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param $1 $event
+     */
+    public function handle(${1:EventClassName} $event)
+    {
+        ${0}
+    }
+}
+
+endsnippet

@@ -1,0 +1,32 @@
+snippet __co
+	${1:public }function __construct(${2})
+	{
+		${0:// code...}
+	}
+snippet php
+	<?php 
+	${1}
+# class
+snippet cl
+	class ${1:ClassName}
+	{
+		${2}
+	}
+# class ...
+snippet! class
+	class ${1:ClassName}
+	{
+		${2}
+		public function ${3:__construct}(${4:argument})
+		{
+			${5:// code...}
+		}
+	}
+# Protected method
+snippet pf 'Public method'
+	${1:protected} function ${2:foo}(${3:/*\$parameters*/})
+	{
+		${0}
+	}
+snippet $t
+	\$this->
