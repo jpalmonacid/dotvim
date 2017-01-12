@@ -1,0 +1,3 @@
+[submodule "ftplugin/phpfolding.vim"]
+	path = ftplugin/phpfolding.vim
+	url = https://github.com/rayburgemeestre/phpfolding.vim.git
