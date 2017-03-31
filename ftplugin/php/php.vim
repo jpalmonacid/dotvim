@@ -28,6 +28,10 @@ noremap <buffer> <Leader>su :call PhpSortUse()<CR>
 " ------  PDV - phpDocumentor for Vim  ------
 nnoremap <buffer> <Leader>d :call pdv#DocumentWithSnip()<CR>
 
+" ------  PHP Code Style Fixer ------
+nnoremap <buffer> <silent> <Leader>fd :call PhpCsFixerFixDirectory()<CR>
+nnoremap <buffer> <silent> <Leader>ff :call PhpCsFixerFixFile()<CR>
+
 " ------  Php Refactoring Toolbox  ------
 nnoremap <buffer> <Leader>rv :call PhpRenameLocalVariable()<CR>
 nnoremap <buffer> <Leader>rp :call PhpRenameClassVariable()<CR>
