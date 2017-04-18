@@ -166,9 +166,6 @@
 [submodule "bundle/tlib_vim"]
 	path = bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim
-[submodule "bundle/vim-twig"]
-	path = bundle/vim-twig
-	url = https://github.com/evidens/vim-twig.git
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
