@@ -43,9 +43,6 @@
 [submodule "bundle/emmet"]
 	path = bundle/emmet
 	url = https://github.com/vim-scripts/Emmet.vim.git
-[submodule "bundle/vim-five.git"]
-	path = bundle/vim-five.git
-	url = http://github.com/tpope/vim-fugitive.git/
 [submodule "bundle/vimgutter.git"]
 	path = bundle/vimgutter.git
 	url = https://github.com/airblade/vim-gitgutter.git
