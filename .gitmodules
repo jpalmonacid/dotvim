@@ -103,9 +103,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/padawan"]
-	path = bundle/padawan
-	url = https://github.com/mkusher/padawan.vim.git
 [submodule "bundle/pdv"]
 	path = bundle/pdv
 	url = https://github.com/tobyS/pdv
@@ -181,9 +178,6 @@
 [submodule "bundle/vim-vue"]
 	path = bundle/vim-vue
 	url = https://github.com/posva/vim-vue
-[submodule "bundle/youcompleteme"]
-	path = bundle/youcompleteme
-	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "bundle/php-cs-fixer"]
 	path = bundle/php-cs-fixer
 	url = https://github.com/stephpy/vim-php-cs-fixer.git
