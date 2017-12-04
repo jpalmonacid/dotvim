@@ -187,3 +187,9 @@
 [submodule "bundle/vim-twig"]
 	path = bundle/vim-twig
 	url = https://github.com/lumiliet/vim-twig.git
+[submodule "bundle/vim-completes-me"]
+	path = bundle/vim-completes-me
+	url = https://github.com/ajh17/VimCompletesMe
+[submodule "bundle/phpactor"]
+	path = bundle/phpactor
+	url = https://github.com/phpactor/phpactor.git
