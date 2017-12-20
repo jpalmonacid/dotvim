@@ -193,3 +193,6 @@
 [submodule "bundle/phpactor"]
 	path = bundle/phpactor
 	url = https://github.com/phpactor/phpactor.git
+[submodule "bundle/gutentags"]
+	path = bundle/gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
