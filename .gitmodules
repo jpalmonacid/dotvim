@@ -196,3 +196,9 @@
 [submodule "bundle/gutentags"]
 	path = bundle/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "bundle/sqlcomplete"]
+	path = bundle/sqlcomplete
+	url = https://github.com/vim-scripts/SQLComplete.vim.git
+[submodule "bundle/dbext"]
+	path = bundle/dbext
+	url = https://github.com/unikuragit/dbext.vim
