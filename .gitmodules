@@ -217,3 +217,12 @@
 [submodule "bundle/textobj-word-column"]
 	path = bundle/textobj-word-column
 	url = https://github.com/coderifous/textobj-word-column.vim.git
+[submodule "bundle/incsearch"]
+	path = bundle/incsearch
+	url = https://github.com/haya14busa/incsearch.vim.git
+[submodule "bundle/incsearch-easymotion"]
+	path = bundle/incsearch-easymotion
+	url = https://github.com/haya14busa/incsearch-easymotion.vim.git
+[submodule "bundle/incsearch-fuzzy"]
+	path = bundle/incsearch-fuzzy
+	url = https://github.com/haya14busa/incsearch-fuzzy.vim.git
