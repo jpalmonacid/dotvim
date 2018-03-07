@@ -205,3 +205,6 @@
 [submodule "bundle/easymotion"]
 	path = bundle/easymotion
 	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "bundle/targets"]
+	path = bundle/targets
+	url = https://github.com/wellle/targets.vim.git
