@@ -202,3 +202,6 @@
 [submodule "bundle/dbext"]
 	path = bundle/dbext
 	url = https://github.com/unikuragit/dbext.vim
+[submodule "bundle/easymotion"]
+	path = bundle/easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
