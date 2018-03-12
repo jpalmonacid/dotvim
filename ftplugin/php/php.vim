@@ -26,19 +26,6 @@ endif
 inoremap <buffer> <Leader>su <Esc>:call PhpSortUse()<CR>
 noremap <buffer> <Leader>su :call PhpSortUse()<CR>
 
-" ------  phpactor ------
-" Include use statement
-map <buffer> <Leader>u :call phpactor#UseAdd()<CR>
-map <buffer> <Leader>e :call phpactor#ClassExpand()<CR>
-map <buffer> <Leader>jcm :call phpactor#ContextMenu()<CR>
-map <buffer> <Leader>jd :call phpactor#GotoDefinition()<CR>
-map <buffer> <Leader>jt :call phpactor#OffsetTypeInfo()<CR>
-map <buffer> <Leader>jm :call phpactor#MoveFile()<CR>
-map <buffer> <Leader>jc :call phpactor#CopyFile()<CR>
-map <buffer> <Leader>jt :call phpactor#Transform()<CR>
-map <buffer> <Leader>jcc :call phpactor#ClassNew()<CR>
-map <buffer> <Leader>ju :call phpactor#FindReferences()<CR>
-
 " ------  PDV - phpDocumentor for Vim  ------
 nnoremap <buffer> <Leader>d :call pdv#DocumentWithSnip()<CR>
 
