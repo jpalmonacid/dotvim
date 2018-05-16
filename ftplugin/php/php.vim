@@ -49,5 +49,7 @@ nnoremap <buffer> <Leader>rcg :call PhpCreateGetters()()<CR>
 " nnoremap <buffer> <Leader>rda :call PhpDocAll()<CR>
 
 " ------  PHPUnit ------
-nnoremap <Leader>us :PHPUnitSwitchFile<CR>
-nnoremap <Leader>ur :PHPUnitRunCurrentFile<CR>
+
+nnoremap <buffer> <Leader>ua :PHPUnitRunAll<CR>
+nnoremap <buffer> <Leader>uf :PHPUnitRunCurrentFile<CR>
+nnoremap <buffer> <Leader>us :PHPUnitSwitchFile<CR>
