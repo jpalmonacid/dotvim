@@ -112,9 +112,6 @@
 [submodule "bundle/vim-php-refactoring-toolbox"]
 	path = bundle/vim-php-refactoring-toolbox
 	url = https://github.com/adoy/vim-php-refactoring-toolbox.git
-[submodule "bundle/phpunit"]
-	path = bundle/phpunit
-	url = https://github.com/c9s/phpunit.vim.git
 [submodule "bundle/php"]
 	path = bundle/php
 	url = https://github.com/StanAngeloff/php.vim.git
