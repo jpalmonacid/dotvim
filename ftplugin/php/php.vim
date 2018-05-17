@@ -1,6 +1,5 @@
 " Offline PHP documentation manual pages from the PEAR package
 set keywordprg=pman
-autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 " ------  php-namespace  ------
 if !exists('*IPhpInsertUse')
