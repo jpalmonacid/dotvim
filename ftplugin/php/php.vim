@@ -19,8 +19,8 @@ if !exists('*IPhpExpandClass')
     endfunction
 endif
 
-" inoremap <buffer> <Leader>e <Esc>:call IPhpExpandClass()<CR>
-" noremap <buffer> <Leader>e :call PhpExpandClass()<CR>
+inoremap <buffer> <Leader>e <Esc>:call IPhpExpandClass()<CR>
+noremap <buffer> <Leader>e :call PhpExpandClass()<CR>
 
 inoremap <buffer> <Leader>su <Esc>:call PhpSortUse()<CR>
 noremap <buffer> <Leader>su :call PhpSortUse()<CR>
