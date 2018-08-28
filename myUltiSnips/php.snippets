@@ -149,6 +149,8 @@ endsnippet
 
 snippet c "php namespace and class" b
 <?php
+declare(strict_types=1);
+
 namespace `!p snip.rv = get_namespace()`;
 
 class `!p snip.rv = class_name_from_file()`
