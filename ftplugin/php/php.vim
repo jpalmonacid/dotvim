@@ -43,9 +43,9 @@ vnoremap <buffer> <Leader>rem :call PhpExtractMethod()<CR>
 " nnoremap <buffer> <Leader>rcp :call PhpCreateProperty()<CR>
 nnoremap <buffer> <Leader>rdu :call PhpDetectUnusedUseStatements()<CR>
 " vnoremap <buffer> <Leader>r== :call PhpAlignAssigns()<CR>
-" nnoremap <buffer> <Leader>rsg :call PhpCreateSettersAndGetters()<CR>
+nnoremap <buffer> <Leader>rca :call PhpCreateSettersAndGetters()<CR>
 nnoremap <buffer> <Leader>rcg :call PhpCreateGetters()()<CR>
-" nnoremap <buffer> <Leader>rda :call PhpDocAll()<CR>
+nnoremap <buffer> <Leader>rda :call PhpDocAll()<CR>
 
 " ------  PHPUnit ------
 
