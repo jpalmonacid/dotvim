@@ -1,115 +1,116 @@
 global !p
 def read_composer_json():
-	import json
+    import json
 
-	composer_file = 'composer.json'
-	if not os.path.isfile(composer_file): return
+    composer_file = 'composer.json'
+    if not os.path.isfile(composer_file): return
 
-	with open(composer_file) as data_file:
-		config = json.load(data_file)
+    with open(composer_file) as data_file:
+            config = json.load(data_file)
 
-	return config
+    return config
 
 def get_autoload_paths():
-	config = read_composer_json()
+    config = read_composer_json()
 
-	if 'autoload' not in config: return []
-	if 'psr-4' not in config['autoload']: return []
+    if 'autoload' not in config: return []
+    if 'psr-4' not in config['autoload']: return []
 
-	paths = config['autoload']['psr-4']
+    paths = config['autoload']['psr-4']
 
-	if 'autoload-dev' in config and 'psr-4' in config['autoload-dev']:
-		 paths.update(config['autoload-dev']['psr-4'])
+    if 'autoload-dev' in config and 'psr-4' in config['autoload-dev']:
+        paths.update(config['autoload-dev']['psr-4'])
 
-	return paths
+    return paths
 
 def class_name_from_file():
-	return re.match(r'.*(?=\.)', fn).group()
+    return re.match(r'.*(?=\.)', fn).group()
 
 def get_class_name_without(words):
-	words = words if type(words) != str else (words,)
-	class_name = class_name_from_file()
-	for word in words:
-		class_name = class_name.replace(word, '')
-	return class_name
+    words = words if type(words) != str else (words,)
+    class_name = class_name_from_file()
+    for word in words:
+        class_name = class_name.replace(word, '')
+    return class_name
 
 def get_namespace():
-	dir_path = os.path.dirname(path) + '/'
-	for ns, fp in get_autoload_paths().items():
-		m = re.search(r'' + re.escape(fp) + '(.*)', dir_path)
-		if m: return (ns.strip('\\') + '\\' + m.group(1).replace('/', '\\')).strip('\\')
+    dir_path = os.path.dirname(path) + '/'
+    for ns, fp in get_autoload_paths().items():
+        m = re.search(r'' + re.escape(fp) + '(.*)', dir_path)
+            if m: return (ns.strip('\\') + '\\' + m.group(1).replace('/', '\\')).strip('\\')
 
 def is_custom_type(type):
-	return (len(t[1]) > 0 and t[1][0].isupper())
+    return (len(t[1]) > 0 and t[1][0].isupper())
 
 def lowercase_first(string):
-	if len(string) < 1: return ''
+    if len(string) < 1: return ''
 
-	return string[0].lower() + string[1:]
+    return string[0].lower() + string[1:]
 
 def uppercase_first(string):
-	if len(string) < 1: return ''
+    if len(string) < 1: return ''
 
-	return string[0].upper() + string[1:]
+    return string[0].upper() + string[1:]
 
 def split_arg_and_type(arg):
-	parts = list(map(lambda s: s.strip(), arg.strip().split(' ')))
+    parameterWithoutValue = arg.split('=')[0];
+    parts = [s for s in parameterWithoutValue.strip().split(' ')]
 
-	if len(parts) != 2:
-		return ['mixed', parts[0]]
+    if len(parts) == 1:
+        return ['mixed', parts[0]]
 
-	return parts
+    return parts
 
 def generate_properties(args):
-	args = args.strip()
+    args = args.strip()
 
-	if args:
-		args = args.split(',')
-		args = list(map(split_arg_and_type, args))
-	else:
-		args = []
+    if args:
+        args = args.split(',')
+            args = list(map(split_arg_and_type, args))
+    else:
+        args = []
 
-	properies = ''
-	for arg in args:
-		properies += '\n    /** @var ' + arg[0] + ' */'
-		properies += '\n    private ' + arg[1] + ';\n'
+    properties = ''
+    for arg in args:
+        properties += '\n    /** @var ' + arg[0] + ' */'
+            properties += '\n    private ' + arg[1] + ';\n'
 
-	return properies
+    return properties
 
 def set_fields_from_arguments(args):
-	args = args.strip()
+    args = args.strip()
 
-	if args:
-		args = args.split(',')
-		args = list(map(split_arg_and_type, args))
-	else:
-		args = []
+    if args:
+        args = args.split(',')
+            args = list(map(split_arg_and_type, args))
+    else:
+        args = []
 
-	properies = []
-	for arg in args:
-		properies.append('$this->' + arg[1][1:] + ' = ' + arg[1] + ';')
+    properties = []
+    for arg in args:
+        properties.append('$this->' + arg[1][1:] + ' = ' + arg[1] + ';')
 
-	return properies
+    return properties
 
 def docblock(args):
-	args = args.strip()
+    args = args.strip()
 
-	if args:
-		args = args.split(',')
-		args = list(map(split_arg_and_type, args))
-	else:
-		args = []
+    if args:
+        args = args.split(',')
+            args = list(map(split_arg_and_type, args))
+    else:
+        args = []
 
-	from functools import reduce
-	max_type_len = reduce(lambda curr, arg: len(arg[0]) if len(arg[0]) > curr else curr, args, 0)
+    from functools import reduce
+    max_type_len = reduce(lambda curr, arg: len(arg[0]) if len(arg[0]) > curr else curr, args, 0)
 
-	block = ''
-	for arg in args:
-		block += '\n     * @param ' + arg[0].ljust(max_type_len) +' ' + arg[1]
+    block = ''
+    for arg in args:
+        block += '\n     * @param ' + arg[0].ljust(max_type_len) +' ' + arg[1]
 
-	if block: block += '\n     *'
+    if block: block += '\n     *'
 
-	return block
+    return block
 endglobal
 
 snippet <? "php open tag" b
@@ -120,11 +121,11 @@ endsnippet
 snippet try "php try and catch blocks" b
 try
 {
-	${0:${VISUAL}}
+        ${0:${VISUAL}}
 }
 catch (${1:\Exception} $e)
 {
-	${2}
+        ${2}
 }
 endsnippet
 
@@ -139,7 +140,7 @@ endsnippet
 
 snippet f "Closure function" wm
 function (${1}) {
-	${0:${VISUAL}}
+        ${0:${VISUAL}}
 }
 endsnippet
 
@@ -155,7 +156,7 @@ namespace `!p snip.rv = get_namespace()`;
 
 class `!p snip.rv = class_name_from_file()`
 {
-	$0
+        $0
 }
 
 endsnippet
@@ -166,7 +167,7 @@ namespace `!p snip.rv = get_namespace()`;
 
 class `!p snip.rv = class_name_from_file()` extends Controller
 {
-	$0
+        $0
 }
 
 endsnippet
@@ -177,7 +178,7 @@ namespace `!p snip.rv = get_namespace()`;
 
 interface `!p snip.rv = class_name_from_file()`
 {
-	$0
+        $0
 }
 endsnippet
 
@@ -188,7 +189,7 @@ namespace `!p snip.rv = get_namespace()`;
 
 trait `!p snip.rv = class_name_from_file()`
 {
-	$0
+        $0
 }
 endsnippet
 
@@ -199,21 +200,21 @@ endsnippet
 snippet class "class" b
 class ${1:`!p snip.rv = class_name_from_file()`}
 {
-	$0
+        $0
 }
 endsnippet
 
 snippet interface "interface" b
 interface ${1:`!p snip.rv = class_name_from_file()`}
 {
-	$0
+        $0
 }
 endsnippet
 
 snippet trait "trait" b
 trait ${1:`!p snip.rv = class_name_from_file()`}
 {
-	$0
+        $0
 }
 endsnippet
 
@@ -221,8 +222,7 @@ snippet __ "php constructor" b
 `!p snip.rv = generate_properties(t[1])`
 /**`!p snip.rv = docblock(t[1])`/
 public function __construct($1)
-{
-	${0:`!p
+{ ${0:`!p
 snip >> 1
 for l in set_fields_from_arguments(t[1]): snip += l`}
 }
@@ -240,19 +240,19 @@ private $${2:`!p if is_custom_type(t[1]): snip.rv = lowercase_first(t[1])`};
 `!p snip.rv = '/** @param ' + t[1] + ' $' + t[2] + ' */'`
 public function set`!p snip.rv = uppercase_first(t[2])`(`!p if is_custom_type(t[1]): snip.rv = t[1] + ' '`$$2)
 {
-	$this->$2 = `!p snip.rv = '' if is_custom_type(t[1]) else '(' + t[1] + ') '`$$2;
+        $this->$2 = `!p snip.rv = '' if is_custom_type(t[1]) else '(' + t[1] + ') '`$$2;
 }
 
 /** @return $1 */
 public function get`!p snip.rv = uppercase_first(t[2])`()
 {
-	return $this->$2;
+        return $this->$2;
 }
 endsnippet
 
 snippet if "php if" !b
 if (${1}) {
-	$0
+        $0
 }
 endsnippet
 
@@ -268,9 +268,9 @@ snippet m "method" b
 /**`!p snip.rv = docblock(t[3])`
  * @return $4
  */
-${1:public} function ${2:methodName}(${3:parameters})
+${1:public} function ${2:methodName}(${3:parameters}): ${4:returnType}
 {
-	$0
+        $0
 }
 endsnippet
 
@@ -278,7 +278,7 @@ snippet ms "method signature" b
 /**`!p snip.rv = docblock(t[2])`
  * @return $3
  */
-public function ${1:methodName}(${2:parameters});
+public function ${1:methodName}(${2:parameters}): ${3:returnType};
 
 endsnippet
 
@@ -286,7 +286,7 @@ snippet sm "setter" b
 /** @param ${1} $${2:`!p snip.rv = lowercase_first(t[1]) if is_custom_type(t[1]) else ''`} */
 public function set`!p snip.rv = uppercase_first(t[2])`(`!p snip.rv = t[1] + ' ' if is_custom_type(t[1]) else ''`$$2)
 {
-	$this->$2 = `!p snip.rv = '' if is_custom_type(t[1]) else '(' + t[1] + ') '`$$2;
+        $this->$2 = `!p snip.rv = '' if is_custom_type(t[1]) else '(' + t[1] + ') '`$$2;
 }
 endsnippet
 
@@ -294,25 +294,25 @@ snippet gm "getter" b
 /** @return ${1} */
 public function get${2:`!p snip.rv = t[1] if is_custom_type(t[1]) else ''`}()
 {
-	return $this->`!p snip.rv = lowercase_first(t[2])`;
+        return $this->`!p snip.rv = lowercase_first(t[2])`;
 }
 endsnippet
 
 snippet map "array map" b
 array_map(function($${1:value}) {
-	return $3;
+        return $3;
 }, $$2);
 endsnippet
 
 snippet filter "array filter" b
 array_filter($$1, function($${2:value}) {
-	return $3;
+        return $3;
 });
 endsnippet
 
 snippet reduce "array reduce" b
 array_reduce($$1, function($${2:carry}, $${3:value}) {
-	return $4;
+        return $4;
 });
 endsnippet
 
@@ -326,25 +326,25 @@ use LaravelDoctrine\Fluent\Fluent;
 
 class `!p snip.rv = class_name_from_file()` extends EntityMapping
 {
-	/**
-	 * Returns the fully qualified name of the class that this mapper maps.
-	 *
-	 * @return string
-	 */
-	public function mapFor()
-	{
-		return `!p snip.rv = get_class_name_without('Mapping')`::class;
-	}
+        /**
+         * Returns the fully qualified name of the class that this mapper maps.
+         *
+         * @return string
+         */
+        public function mapFor()
+        {
+                return `!p snip.rv = get_class_name_without('Mapping')`::class;
+        }
 
-	/**
-	 * Load the object's metadata through the Metadata Builder object.
-	 *
-	 * @param Fluent $builder
-	 */
-	public function map(Fluent $builder)
-	{
-		$builder->$0
-	}
+        /**
+         * Load the object's metadata through the Metadata Builder object.
+         *
+         * @param Fluent $builder
+         */
+        public function map(Fluent $builder)
+        {
+                $builder->$0
+        }
 }
 
 endsnippet
@@ -406,7 +406,7 @@ class `!p snip.rv = class_name_from_file()` implements RouteBinder
                 'as'   => self::$1,
                 'uses' => `!p snip.rv = get_class_name_without('Routes')`Controller::class . '@${3:controllerAction}',
             ]);
-			$0
+                        $0
         });
     }
 }
@@ -460,10 +460,10 @@ use PHPUnit_Framework_TestCase;
 
 class `!p snip.rv = class_name_from_file()` extends PHPUnit_Framework_TestCase
 {
-	public function test_${1:behaviour}()
-	{
-		${2}
-	}
+        public function test_${1:behaviour}()
+        {
+                ${2}
+        }
 }
 
 endsnippet
