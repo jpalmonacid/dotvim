@@ -61,9 +61,6 @@
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
-[submodule "bundle/vim-javascript-syntax"]
-	path = bundle/vim-javascript-syntax
-	url = https://github.com/jelera/vim-javascript-syntax.git
 [submodule "bundle/jedi"]
 	path = bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim.git
@@ -244,3 +241,9 @@
 [submodule "bundle/vim-styled-components"]
 	path = bundle/vim-styled-components
 	url = https://github.com/styled-components/vim-styled-components.git
+[submodule "bundle/yajs"]
+	path = bundle/yajs
+	url = https://github.com/othree/yajs.vim.git
+[submodule "bundle/es.next.syntax"]
+	path = bundle/es.next.syntax
+	url = https://github.com/othree/es.next.syntax.vim.git
