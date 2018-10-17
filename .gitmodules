@@ -247,3 +247,6 @@
 [submodule "bundle/es.next.syntax"]
 	path = bundle/es.next.syntax
 	url = https://github.com/othree/es.next.syntax.vim.git
+[submodule "bundle/vim-graphql"]
+	path = bundle/vim-graphql
+	url = https://github.com/jparise/vim-graphql.git
