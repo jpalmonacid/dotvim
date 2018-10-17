@@ -250,3 +250,6 @@
 [submodule "bundle/vim-graphql"]
 	path = bundle/vim-graphql
 	url = https://github.com/jparise/vim-graphql.git
+[submodule "bundle/deoplete-ternjs"]
+	path = bundle/deoplete-ternjs
+	url = https://github.com/carlitux/deoplete-ternjs.git
