@@ -253,3 +253,6 @@
 [submodule "bundle/deoplete-ternjs"]
 	path = bundle/deoplete-ternjs
 	url = https://github.com/carlitux/deoplete-ternjs.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
