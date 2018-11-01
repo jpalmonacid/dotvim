@@ -256,3 +256,6 @@
 [submodule "bundle/deoplete-emoji"]
 	path = bundle/deoplete-emoji
 	url = https://github.com/fszymanski/deoplete-emoji.git
+[submodule "bundle/vim-textobj-chunk"]
+	path = bundle/vim-textobj-chunk
+	url = https://github.com/Chun-Yang/vim-textobj-chunk.git
