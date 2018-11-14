@@ -259,3 +259,6 @@
 [submodule "bundle/vim-textobj-chunk"]
 	path = bundle/vim-textobj-chunk
 	url = https://github.com/Chun-Yang/vim-textobj-chunk.git
+[submodule "bundle/vim-node"]
+	path = bundle/vim-node
+	url = https://github.com/moll/vim-node
