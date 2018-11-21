@@ -262,3 +262,9 @@
 [submodule "bundle/vim-node"]
 	path = bundle/vim-node
 	url = https://github.com/moll/vim-node
+[submodule "bundle/yats"]
+	path = bundle/yats
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
+[submodule "bundle/typescript-tsuquyomi"]
+	path = bundle/typescript-tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git
