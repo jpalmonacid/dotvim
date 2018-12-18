@@ -37,7 +37,7 @@ def get_namespace():
     dir_path = os.path.dirname(path) + '/'
     for ns, fp in get_autoload_paths().items():
         m = re.search(r'' + re.escape(fp) + '(.*)', dir_path)
-            if m: return (ns.strip('\\') + '\\' + m.group(1).replace('/', '\\')).strip('\\')
+        if m: return (ns.strip('\\') + '\\' + m.group(1).replace('/', '\\')).strip('\\')
 
 def is_custom_type(type):
     return (len(t[1]) > 0 and t[1][0].isupper())
@@ -66,14 +66,14 @@ def generate_properties(args):
 
     if args:
         args = args.split(',')
-            args = list(map(split_arg_and_type, args))
+        args = list(map(split_arg_and_type, args))
     else:
         args = []
 
     properties = ''
     for arg in args:
         properties += '\n    /** @var ' + arg[0] + ' */'
-            properties += '\n    private ' + arg[1] + ';\n'
+        properties += '\n    private ' + arg[1] + ';\n'
 
     return properties
 
@@ -82,7 +82,7 @@ def set_fields_from_arguments(args):
 
     if args:
         args = args.split(',')
-            args = list(map(split_arg_and_type, args))
+        args = list(map(split_arg_and_type, args))
     else:
         args = []
 
@@ -97,7 +97,7 @@ def docblock(args):
 
     if args:
         args = args.split(',')
-            args = list(map(split_arg_and_type, args))
+        args = list(map(split_arg_and_type, args))
     else:
         args = []
 
