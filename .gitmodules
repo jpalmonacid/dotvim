@@ -268,3 +268,6 @@
 [submodule "bundle/typescript-tsuquyomi"]
 	path = bundle/typescript-tsuquyomi
 	url = https://github.com/Quramy/tsuquyomi.git
+[submodule "bundle/vim-stylus"]
+	path = bundle/vim-stylus
+	url = https://github.com/iloginow/vim-stylus
