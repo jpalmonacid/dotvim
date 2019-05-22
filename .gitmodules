@@ -271,3 +271,9 @@
 [submodule "bundle/vim-stylus"]
 	path = bundle/vim-stylus
 	url = https://github.com/iloginow/vim-stylus
+[submodule "bundle/vim-pug"]
+	path = bundle/vim-pug
+	url = https://github.com/digitaltoad/vim-pug.git
+[submodule "bundle/vim-pug-complete"]
+	path = bundle/vim-pug-complete
+	url = https://github.com/dNitro/vim-pug-complete.git
