@@ -277,3 +277,6 @@
 [submodule "bundle/vim-pug-complete"]
 	path = bundle/vim-pug-complete
 	url = https://github.com/dNitro/vim-pug-complete.git
+[submodule "bundle/vim-emoji-ab"]
+	path = bundle/vim-emoji-ab
+	url = https://gitlab.com/gi1242/vim-emoji-ab.git
