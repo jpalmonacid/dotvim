@@ -277,3 +277,6 @@
 [submodule "bundle/vim-emoji-ab"]
 	path = bundle/vim-emoji-ab
 	url = https://gitlab.com/gi1242/vim-emoji-ab.git
+[submodule "bundle/vim-jsdoc"]
+	path = bundle/vim-jsdoc
+	url = https://github.com/heavenshell/vim-jsdoc.git
