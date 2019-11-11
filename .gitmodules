@@ -280,3 +280,6 @@
 [submodule "bundle/vim-jsdoc"]
 	path = bundle/vim-jsdoc
 	url = https://github.com/heavenshell/vim-jsdoc.git
+[submodule "bundle/deoplete-emoji"]
+	path = bundle/deoplete-emoji
+	url = https://github.com/fszymanski/deoplete-emoji
