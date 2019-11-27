@@ -1,8 +1,31 @@
 noremap <buffer> K :TernDoc<CR>
-noremap <buffer> <Leader>jt :TernType<CR>
-noremap <buffer> <Leader>jd :TernDef<CR>
-noremap <buffer> <Leader>js :TernDefSplit<CR>
-noremap <buffer> <Leader>jr :TernRename<CR>
-noremap <buffer> <Leader>ju :TernRefs<CR>
 
 nmap <silent> <Leader>d ?function<cr>:noh<cr><Plug>(jsdoc)
+
+" nnoremap <plug>(lsp-code-action)
+" nnoremap <plug>(lsp-declaration)
+" nnoremap <plug>(lsp-peek-declaration)
+nmap <Leader>jd <plug>(lsp-definition)
+nmap <Leader>js <plug>(lsp-peek-definition)
+nmap <Leader>jt <plug>(lsp-document-symbol)
+" nmap <plug>(lsp-document-diagnostics)
+nmap <Leader>jh <plug>(lsp-hover)
+" nmap <plug>(lsp-preview-close)
+" nmap <plug>(lsp-preview-focus)
+" nmap <plug>(lsp-previous-error)
+" nmap <plug>(lsp-next-error)
+" nmap <plug>(lsp-previous-reference)
+" nmap <plug>(lsp-next-reference)
+nmap <Leader>ju <plug>(lsp-references)
+nmap <Leader>jr <plug>(lsp-rename)
+" nmap <plug>(lsp-workspace-symbol)
+nmap <Leader>jf <plug>(lsp-document-format)
+" vmap <Leader>jf <plug>(lsp-document-format)
+" nmap <plug>(lsp-document-range-format)
+" xmap <plug>(lsp-document-range-format)
+" nmap <plug>(lsp-implementation)
+" nmap <plug>(lsp-peek-implementation)
+" nmap <plug>(lsp-type-definition)
+" nmap <plug>(lsp-peek-type-definition)
+nmap <Leader>jst <plug>(lsp-status)
+nmap <Leader>jsh <plug>(lsp-signature-help)
