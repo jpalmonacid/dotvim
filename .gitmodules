@@ -289,3 +289,6 @@
 [submodule "bundle/asyncomplete-emoji.vim"]
 	path = bundle/asyncomplete-emoji.vim
 	url = https://github.com/prabirshrestha/asyncomplete-emoji.vim.git
+[submodule "bundle/vim-lsp-typescript"]
+	path = bundle/vim-lsp-typescript
+	url = https://github.com/ryanolsonx/vim-lsp-typescript.git
