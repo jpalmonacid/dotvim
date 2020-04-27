@@ -10,9 +10,6 @@
 [submodule "bundle/vim-airline-themes"]
 	path = bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "bundle/vim-blade"]
-	path = bundle/vim-blade
-	url = https://github.com/jwalton512/vim-blade.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
@@ -46,36 +43,21 @@
 [submodule "bundle/vimgutter.git"]
 	path = bundle/vimgutter.git
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "bundle/vim-haml"]
-	path = bundle/vim-haml
-	url = https://github.com/tpope/vim-haml.git
-[submodule "bundle/html5"]
-	path = bundle/html5
-	url = https://github.com/othree/html5.vim.git
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "bundle/javacomplete"]
 	path = bundle/javacomplete
 	url = https://github.com/vim-scripts/javacomplete.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript
 [submodule "bundle/jedi"]
 	path = bundle/jedi
 	url = https://github.com/davidhalter/jedi-vim.git
-[submodule "bundle/vim-json"]
-	path = bundle/vim-json
-	url = https://github.com/elzr/vim-json.git
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
 [submodule "bundle/l9"]
 	path = bundle/l9
 	url = https://github.com/vim-scripts/L9.git
-[submodule "bundle/vim-less"]
-	path = bundle/vim-less
-	url = https://github.com/groenewege/vim-less.git
 [submodule "bundle/vim-localvimrc"]
 	path = bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
@@ -109,9 +91,6 @@
 [submodule "bundle/vim-php-refactoring-toolbox"]
 	path = bundle/vim-php-refactoring-toolbox
 	url = https://github.com/adoy/vim-php-refactoring-toolbox.git
-[submodule "bundle/php"]
-	path = bundle/php
-	url = https://github.com/StanAngeloff/php.vim.git
 [submodule "bundle/preservenoeol"]
 	path = bundle/preservenoeol
 	url = https://github.com/yous/PreserveNoEOL.git
@@ -121,9 +100,6 @@
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/scss-syntax"]
-	path = bundle/scss-syntax
-	url = https://github.com/cakebaker/scss-syntax.vim.git
 [submodule "bundle/vim-session"]
 	path = bundle/vim-session
 	url = https://github.com/xolox/vim-session.git/
@@ -232,12 +208,6 @@
 [submodule "bundle/es.next.syntax"]
 	path = bundle/es.next.syntax
 	url = https://github.com/othree/es.next.syntax.vim.git
-[submodule "bundle/vim-graphql"]
-	path = bundle/vim-graphql
-	url = https://github.com/jparise/vim-graphql.git
-[submodule "bundle/typescript-vim"]
-	path = bundle/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim
 [submodule "bundle/vim-textobj-chunk"]
 	path = bundle/vim-textobj-chunk
 	url = https://github.com/Chun-Yang/vim-textobj-chunk.git
@@ -247,15 +217,9 @@
 [submodule "bundle/yats"]
 	path = bundle/yats
 	url = https://github.com/HerringtonDarkholme/yats.vim.git
-[submodule "bundle/typescript-tsuquyomi"]
-	path = bundle/typescript-tsuquyomi
-	url = https://github.com/Quramy/tsuquyomi.git
 [submodule "bundle/vim-stylus"]
 	path = bundle/vim-stylus
 	url = https://github.com/iloginow/vim-stylus
-[submodule "bundle/vim-pug"]
-	path = bundle/vim-pug
-	url = https://github.com/digitaltoad/vim-pug.git
 [submodule "bundle/vim-pug-complete"]
 	path = bundle/vim-pug-complete
 	url = https://github.com/dNitro/vim-pug-complete.git
@@ -295,3 +259,6 @@
 [submodule "bundle/vim-devicons"]
 	path = bundle/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "bundle/vim-polyglot"]
+	path = bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
