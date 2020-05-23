@@ -262,3 +262,6 @@
 [submodule "bundle/vim-polyglot"]
 	path = bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "bundle/vim-jest-snippets"]
+	path = bundle/vim-jest-snippets
+	url = https://github.com/jhkersul/vim-jest-snippets.git
