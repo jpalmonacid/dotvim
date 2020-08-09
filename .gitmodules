@@ -49,9 +49,6 @@
 [submodule "bundle/javacomplete"]
 	path = bundle/javacomplete
 	url = https://github.com/vim-scripts/javacomplete.git
-[submodule "bundle/jedi"]
-	path = bundle/jedi
-	url = https://github.com/davidhalter/jedi-vim.git
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
@@ -118,9 +115,6 @@
 [submodule "bundle/vim-plugin-tagbar-phpctags"]
 	path = bundle/vim-plugin-tagbar-phpctags
 	url = https://github.com/techlivezheng/vim-plugin-tagbar-phpctags.git
-[submodule "bundle/tern_for"]
-	path = bundle/tern_for
-	url = https://github.com/marijnh/tern_for_vim.git
 [submodule "bundle/tlib_vim"]
 	path = bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim
@@ -232,3 +226,7 @@
 [submodule "bundle/vim-jest-snippets"]
 	path = bundle/vim-jest-snippets
 	url = https://github.com/jhkersul/vim-jest-snippets.git
+[submodule "bundle/coc.nvim"]
+	path = bundle/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+	branch = release
