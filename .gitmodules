@@ -236,3 +236,6 @@
 [submodule "bundle/vim-visual-multi"]
 	path = bundle/vim-visual-multi
 	url = https://github.com/mg979/vim-visual-multi.git
+[submodule "bundle/vim-ctrlp-session"]
+	path = bundle/vim-ctrlp-session
+	url = https://github.com/okcompute/vim-ctrlp-session.git
