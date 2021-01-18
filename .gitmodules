@@ -239,3 +239,6 @@
 [submodule "bundle/vim-ctrlp-session"]
 	path = bundle/vim-ctrlp-session
 	url = https://github.com/okcompute/vim-ctrlp-session.git
+[submodule "bundle/vim-go"]
+	path = bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
