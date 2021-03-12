@@ -242,3 +242,6 @@
 [submodule "bundle/vim-go"]
 	path = bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "bundle/vim-context-commentstring"]
+	path = bundle/vim-context-commentstring
+	url = https://github.com/suy/vim-context-commentstring.git
