@@ -245,3 +245,6 @@
 [submodule "bundle/vim-context-commentstring"]
 	path = bundle/vim-context-commentstring
 	url = https://github.com/suy/vim-context-commentstring.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
