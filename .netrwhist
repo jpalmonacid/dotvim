@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/jpalmonacid/web_development/kiusys/projects/www/kiucargo'
-let g:netrw_dirhist_2='/home/jpalmonacid/web_development/kiusys/projects/kiucargo/models'
-let g:netrw_dirhist_3='/home/jpalmonacid/.vim/bundle'
-let g:netrw_dirhist_4='/home/jpalmonacid'
-let g:netrw_dirhist_5='/home/jpalmonacid/.vim'
-let g:netrw_dirhist_6='/home/jpalmonacid/development/personal/cursos/learn_c_thehardway_1ed_inprogress-zed_shaw'
-let g:netrw_dirhist_7='/home/jpalmonacid/Documents/kiusys/HealthCheck'
