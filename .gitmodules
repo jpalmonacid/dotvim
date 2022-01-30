@@ -254,3 +254,6 @@
 [submodule "bundle/fugitive-gitlab.vim"]
 	path = bundle/fugitive-gitlab.vim
 	url = https://github.com/shumphrey/fugitive-gitlab.vim.git
+[submodule "bundle/vista.vim"]
+	path = bundle/vista.vim
+	url = https://github.com/liuchengxu/vista.vim.git
