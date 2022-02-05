@@ -1,4 +1,4 @@
 {
   "eslint.autoFixOnSave": false,
-  "coc.preferences.jumpCommand": "vsplit"
+  "coc.preferences.jumpCommand": "edit"
 }
