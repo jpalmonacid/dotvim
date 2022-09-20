@@ -260,3 +260,6 @@
 [submodule "bundle/vim-dadbod"]
 	path = bundle/vim-dadbod
 	url = https://github.com/tpope/vim-dadbod.git
+[submodule "bundle/vim-freemarker"]
+	path = bundle/vim-freemarker
+	url = https://github.com/andreshazard/vim-freemarker.git
