@@ -263,3 +263,6 @@
 [submodule "bundle/vim-freemarker"]
 	path = bundle/vim-freemarker
 	url = https://github.com/andreshazard/vim-freemarker.git
+[submodule "bundle/codeium.vim"]
+	path = bundle/codeium.vim
+	url = https://github.com/Exafunction/codeium.vim.git
