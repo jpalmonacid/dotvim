@@ -266,3 +266,6 @@
 [submodule "bundle/codeium.vim"]
 	path = bundle/codeium.vim
 	url = https://github.com/Exafunction/codeium.vim.git
+[submodule "bundle/vim-prisma"]
+	path = bundle/vim-prisma
+	url = https://github.com/prisma/vim-prisma.git
