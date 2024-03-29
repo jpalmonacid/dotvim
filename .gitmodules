@@ -269,3 +269,6 @@
 [submodule "bundle/vim-prisma"]
 	path = bundle/vim-prisma
 	url = https://github.com/prisma/vim-prisma.git
+[submodule "/home/jpalmonacid/.vim/bundle/rust.vim"]
+	path = /home/jpalmonacid/.vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
