@@ -85,9 +85,6 @@
 [submodule "bundle/vim-php-refactoring-toolbox"]
 	path = bundle/vim-php-refactoring-toolbox
 	url = https://github.com/adoy/vim-php-refactoring-toolbox.git
-[submodule "bundle/preservenoeol"]
-	path = bundle/preservenoeol
-	url = https://github.com/yous/PreserveNoEOL.git
 [submodule "bundle/vim-react-snippets"]
 	path = bundle/vim-react-snippets
 	url = https://github.com/justinj/vim-react-snippets.git
