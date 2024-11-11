@@ -9,5 +9,14 @@
           "default": true
       }
   ],
-  "angular.enable-strict-mode-prompt": false
+  "angular.enable-strict-mode-prompt": false,
+  "sonarlint.ls.javaHome": "/usr/lib/jvm/java-21-openjdk-amd64",
+  "sonarlint.connectedMode.connections.sonarqube": [
+      {
+          "serverUrl": "https://codequality.artprovincia.com.ar",
+          "token": "squ_c69113aea12c350a11a00a37ac3d38340f6608e1",
+          "connectionId": "https-codequality-artprovincia-com-ar"
+      }
+  ],
+  "sonarlint.output.showVerboseLogs": true
 }
