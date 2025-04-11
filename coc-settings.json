@@ -1,5 +1,5 @@
 {
-   "eslint.autoFixOnSave": true,
+   "eslint.codeActionsOnSave.mode": "all",
    "eslint.fixOnSaveTimeout": 5000,
   "coc.preferences.jumpCommand": "edit",
   "java.configuration.runtimes": [
