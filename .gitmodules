@@ -269,3 +269,6 @@
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+[submodule "bundle/vim-ai.git"]
+	path = bundle/vim-ai.git
+	url = https://github.com/madox2/vim-ai.git
